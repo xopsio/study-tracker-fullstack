@@ -1,0 +1,2 @@
+# Aja testit
+pytest -q
