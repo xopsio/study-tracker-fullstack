@@ -1,2 +1,2 @@
-# Aja testit
-pytest -q
+# aja testit
+python -m pytest -q
