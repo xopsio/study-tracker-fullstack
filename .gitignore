@@ -2,12 +2,21 @@
 __pycache__/
 *.py[cod]
 *.egg-info/
+.pytest_cache/
 .env
 venv/
+.venv/
+
+.idea/
+.vscode/
+
+node_modules/
+dist/
+
 
 # DB
 db/study_tracker.sqlite3
 
 # Editor
-.vscode/
+
 .DS_Store
