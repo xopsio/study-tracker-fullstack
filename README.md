@@ -111,3 +111,6 @@ Jos koodia muutetaan ilman ymmärrystä,
 työnkulku on epäonnistunut.
 
 Tavoite on oppia tekemään asiat oikein.
+## Workflow
+
+This project uses GitHub + Linear for issue tracking and pull request linkage.
