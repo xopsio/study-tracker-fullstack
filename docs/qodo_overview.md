@@ -1,136 +1,100 @@
 # Qodo.ai usage and documentation
 
+Qodo.ai is used in this project as a development support tool for code review,
+problem analysis, testing, and learning.
 
-Tämä projekti on **opiskeluun ja osaamisen näyttämiseen tarkoitettu fullstack-harjoitusprojekti**.
-Projektin tavoitteena on oppia ohjelmistokehitystä hallitusti, ymmärtäen ja ammattimaisesti
-– ei vain tuottamalla koodia.
+The purpose of using Qodo is to support the development process rather than
+automatically generate or accept changes.
 
-Projektissa yhdistyvät:
-- frontend (HTML, CSS, JavaScript)
-- backend (Python, FastAPI)
-- tietokannat
-- testaus
-- versionhallinta
-- open source -tyylinen työskentely
+The developer remains responsible for understanding, reviewing, verifying,
+and accepting the final implementation.
 
----
+## Usage
 
-## Qodo.ai tässä projektissa
+Qodo may be used to:
 
-Qodo.ai:tä käytetään **oppimisen tukena**, ei automaattisena koodinkorjaajana.
+- review code changes
+- identify possible defects
+- analyze technical problems
+- suggest small improvements
+- support testing and verification
+- provide an additional review during pull requests
 
-Qodon käyttö on tässä projektissa **tarkasti ohjattua ja dokumentoitua**.
-Tavoitteena on varmistaa, että:
-- jokainen korjaus ymmärretään
-- muutokset ovat pieniä ja hallittuja
-- oppiminen menee nopeuden edelle
+Suggestions from Qodo are treated as development input and are not accepted
+automatically.
 
----
+## Development approach
 
-## Qodoa koskevat dokumentit
+When Qodo is used, changes should follow the same development practices as
+other work in the repository.
 
-Projektissa on useita tiedostoja, jotka yhdessä määrittelevät,
-miten Qodoa (ja muita tekoälyagentteja) saa käyttää.
+In particular:
 
-### AGENTS.md
-**Sijainti:** projektin juuressa
+- changes should remain small and focused
+- unrelated refactoring should be avoided
+- relevant functionality should be verified
+- suggestions should be reviewed before they are accepted
+- documentation should be updated when behavior changes
 
-Määrittelee:
-- miten tekoälyagentit saavat toimia
-- että diagnoosi tehdään ennen koodia
-- että muutokset pidetään pieninä
-- mitkä komennot käytetään varmentamiseen
+General development practices are documented in `best_practices.md`.
 
-Tämä on **korkeimman tason ohjetiedosto** agenteille.
+Guidelines for automated development tools are documented in `AGENTS.md`.
 
----
+## Related documentation
 
-### best_practices.md
-**Sijainti:** projektin juuressa
+Additional Qodo-specific documentation is available in the `docs/` directory.
 
-Määrittelee projektin pakolliset käytännöt:
-- oppimismallin (selitys ennen korjausta)
-- kieli- ja tyylistandardit
-- frontend- ja backend-käytännöt
-- testausvaatimukset
-- pydantic v2 -säännöt
+### `docs/qodo_workflow.md`
 
-Tätä tiedostoa noudatetaan aina, myös Qodon ehdotuksia arvioitaessa.
+Describes the workflow used when Qodo is involved in problem analysis,
+implementation, and verification.
 
----
+### `docs/qodo_prompts.md`
 
-### docs/qodo_workflow.md
+Contains example prompts that have been used to guide Qodo during development.
 
-Määrittelee **pakollisen työnkulun Qodon käyttöön**:
+### `docs/learning-log.md`
 
-1. **Diagnoosi ilman koodia**
-   - mikä on juurisyy
-   - mihin tiedostoon kosketaan
-   - miten korjaus varmennetaan
+Records selected development and learning cases where Qodo was used to help
+analyze a non-trivial problem.
 
-2. **Minimaalinen korjaus**
-   - yksi tiedosto
-   - pieni diff
-   - ei refaktorointia ilman pyyntöä
+### `docs/commit-notes.md`
 
-Tämä toimii checklistinä joka kerta, kun Qodoa käytetään.
+Contains notes related to earlier Qodo and documentation commits.
 
----
+These files are kept as part of the project's development documentation and
+history.
 
-### docs/qodo_prompts.md
+## Code review
 
-Sisältää **valmiit kehotteet (promptit)** Qodon käyttöön.
+Qodo may also participate in pull request reviews.
 
-Niillä varmistetaan, että Qodo:
-- selittää ennen korjaamista
-- ei tee arvailuja
-- tarkistaa versiot ja ympäristön
-- suosii testattavuutta
+Automated review comments are evaluated in the same way as other review
+feedback. A suggestion may be accepted, modified, or rejected depending on
+whether it improves the project and can be verified.
 
-Promptit kopioidaan suoraan Qodon käyttöliittymään.
+The presence of an automated review does not replace developer review or
+testing.
 
----
+## Version control
 
-### docs/learning-log.md
+The repository follows the branching model documented in `README.md`.
 
-**Oppimisloki**, johon kirjataan Qodon käyttö.
+Development work is performed outside `main`. Task-specific branches may be
+merged into `develop`, and reviewed changes are later merged from `develop`
+into `main`.
 
-Yksi rivi per tapaus, muodossa:
+Qodo reviews may be part of this workflow when pull requests are created.
 
-päivämäärä – ongelma – juurisyy – korjaus – varmennus
+## Principles
 
+The use of Qodo in this project follows a few general principles:
 
-Lokiin kirjoitetaan **vain**, kun Qodoa on käytetty ei-triviaaliin ongelmaan.
-Tarkoitus on estää samojen virheiden toistuminen ja lukita opittu tieto.
+- understand changes before accepting them
+- prefer small and verifiable changes
+- use automated tools as support rather than authority
+- verify affected functionality
+- keep the developer responsible for the final result
 
----
-
-### docs/commit-notes.md
-
-Sisältää muistiinpanot Qodoon liittyvistä commit-käytännöistä.
-Auttaa ymmärtämään, miksi tietyt dokumentaatio-commitit on tehty.
-
----
-
-## Projektin perusperiaatteet
-
-- oppiminen ennen automaatiota
-- ymmärrys ennen nopeutta
-- pienet muutokset ovat parempia kuin suuret
-- testaus ja varmennus ovat pakollisia
-- tekoäly on työkalu, ei ajattelun korvike
-
----
-
-## Lopuksi
-
-Tämä projekti on rakennettu siten, että se:
-- soveltuu opiskeluun
-- kelpaa TET-harjoitteluun
-- vastaa open source -projektien työskentelytapaa
-- tukee osaamisen näyttämistä
-
-Jos korjaus tehdään ilman ymmärrystä,
-työnkulku on epäonnistunut.
-
-Tavoite on oppia tekemään asiat oikein.
+Qodo is one of the tools used during development. It supports the project but
+does not define the project itself.
