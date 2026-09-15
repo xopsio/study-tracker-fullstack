@@ -1,92 +1,65 @@
-# agents
+# Agent guidelines
 
-this file defines how ai agents must operate in this repository.
-it prioritizes learning, safety, and small verifiable changes.
+This document defines guidelines for automated development tools used in this repository.
 
----
+## Scope
 
-## goal
+- keep changes small and focused
+- modify only files related to the requested task
+- avoid unrelated refactoring
+- do not introduce unnecessary dependencies
+- preserve the existing project structure unless the task requires otherwise
 
-help me learn by diagnosing issues and proposing small, verifiable fixes.
+## Development process
 
-**suomennos**
-tavoite: auta minua oppimaan diagnosoimalla ongelmia ja ehdottamalla pieniä, varmennettavia korjauksia.
+Before making a change:
 
----
+1. identify the problem and its likely cause
+2. determine which files need to change
+3. decide how the change will be verified
 
-## workflow rules (must follow)
+When implementing:
 
-- first: diagnose (root cause + where to change + how to verify).
-- then: propose the minimal patch.
-- keep diffs small and focused.
-- change only the files requested or clearly related to the issue.
-- do not refactor unless explicitly requested.
+- prefer the smallest reasonable change
+- keep diffs readable and focused
+- follow the practices documented in `best_practices.md`
+- update documentation when behavior changes
 
-**suomennos**
-työnkulun säännöt (pakolliset):
-- ensin: diagnoosi (juurisyy + mihin muutos tehdään + miten varmennetaan).
-- sitten: minimaalinen korjaus.
-- pidä muutokset pieninä ja rajattuina.
-- muuta vain pyydettyjä tai selvästi asiaan liittyviä tiedostoja.
-- älä refaktoroi ilman erillistä pyyntöä.
+## Project technologies
 
----
+The project uses:
 
-## project constraints (strict)
+- JavaScript for the frontend
+- Python and FastAPI for the backend
+- Pydantic v2 for data validation
+- SQLAlchemy and SQLite for persistence
+- pytest for backend testing
 
-- source code language: english only
-- comments: lowercase only
-- strings: english + lowercase only
-- pydantic v2 is used in this repository
-- follow best_practices.md
+## Verification
 
-**suomennos**
-projektin rajoitteet (tiukat):
-- lähdekoodin kieli: vain englanti
-- kommentit: vain pienet kirjaimet
-- merkkijonot: englanti ja pienet kirjaimet
-- pydantic v2 on käytössä tässä repossa
-- noudata best_practices.md:tä
+Use the relevant project checks after making changes.
 
----
+Available commands include:
 
-## verification commands
+- `scripts/run_backend.ps1`
+- `scripts/run_tests.ps1`
 
-- backend run (windows powershell): scripts/run_backend.ps1
-- tests (windows powershell): scripts/run_tests.ps1
+The affected functionality should be verified before a change is considered complete.
 
-**suomennos**
-varmennuskomennot:
-- backendin käynnistys (windows powershell): scripts/run_backend.ps1
-- testit (windows powershell): scripts/run_tests.ps1
+## Version control
 
----
+The branching model is documented in `README.md`.
 
-## conventions
+Development work is performed outside `main`. Task-specific branches may be merged into `develop`, and reviewed changes are later merged from `develop` into `main`.
 
-- prefer feature branches: feature/<name> or chore/<name>
-- commit messages: type: short summary (e.g., "chore: normalize frontend strings")
-- update documentation when behavior changes:
-  - docs/api.md
-  - docs/testing.md
+Commit messages should use a short descriptive format, for example:
 
-**suomennos**
-käytännöt:
-- suosi feature-branchia: feature/<nimi> tai chore/<nimi>
-- commit-viestit: tyyppi: lyhyt yhteenveto (esim. "chore: normalize frontend strings")
-- päivitä dokumentaatio, kun käytös muuttuu:
-  - docs/api.md
-  - docs/testing.md
+`docs: update development guidelines`
 
----
+## Responsibility
 
-## authority
+Automated tools may analyze code, suggest changes, and assist with reviews.
 
-- if this file conflicts with other guidance, this file takes precedence.
-
-**suomennos**
-määräysvalta:
-- jos tämä tiedosto on ristiriidassa muiden ohjeiden kanssa, tätä noudatetaan.
-
+Suggestions are treated as development input rather than automatically accepted changes. The developer remains responsible for reviewing, understanding, and verifying the final implementation.
 
 
