@@ -1,103 +1,82 @@
-# best practices
+# Development practices
 
-this document defines mandatory development practices for this repository.
-it applies to human contributors and all ai agents.
+This document describes the development practices used in this repository.
 
----
+## General principles
 
-## learning mode (must follow)
+- keep changes small and focused
+- avoid unrelated changes
+- prefer clear and maintainable solutions
+- avoid unnecessary dependencies
+- verify changes before merging them
+- update documentation when behavior changes
 
-- explain the root cause in 1–3 sentences before proposing any code.
-- propose a minimal fix with a small, focused diff.
-- keep the existing design unless a change is explicitly requested.
-- include a clear verification step for every change (how to run/check).
-- if there are multiple valid solutions, list two options and recommend one with a reason.
+## JavaScript
 
----
+Frontend code is organized into small modules:
 
-## scope and safety
+- `app.js`
+- `ui.js`
+- `storage.js`
+- `api.js`
 
-- do not change unrelated files.
-- do not introduce new dependencies unless explicitly requested.
-- avoid large refactors; prefer incremental, verifiable improvements.
-- modify only the files required to resolve the issue.
+Guidelines:
 
----
+- avoid unnecessary global variables
+- keep modules focused on a clear responsibility
+- handle failed HTTP requests and network errors explicitly
+- keep user interface logic separate from data access where practical
 
-## language and style (strict)
+## Python
 
-- source code language: english only
-- comments: lowercase only
-- strings: english + lowercase only
-- keep messages short and neutral (e.g., "app ready", "server not responding")
-- do not add finnish strings to source code
+The backend uses:
 
----
+- FastAPI
+- Pydantic v2
+- SQLAlchemy
+- SQLite
 
-## javascript (frontend)
+Guidelines:
 
-- keep modules small and focused:
-  - app.js
-  - ui.js
-  - storage.js
-  - api.js
-- avoid global variables; keep state inside a single app module.
-- do not hardcode ui text inside logic; use constants when needed.
-- handle fetch errors explicitly:
-  - check res.ok
-  - handle network and parsing errors
+- use `ConfigDict(from_attributes=True)` with Pydantic v2 when converting ORM objects
+- keep database setup separate from data access logic
+- use separate request and response schemas when appropriate
+- keep error responses consistent
 
----
+## Testing
 
-## python (backend)
+Backend tests use:
 
-- framework: fastapi
-- data validation: pydantic v2
+- pytest
+- FastAPI TestClient
 
-- orm to schema:
-  - use ConfigDict(from_attributes=True)
-  - do not use orm_mode
+Tests should:
 
-- separate schemas:
-  - request schemas (e.g., StudyCreate)
-  - response schemas (e.g., Study)
+- be deterministic and repeatable
+- avoid real network requests unless explicitly required
+- use isolated test data
+- verify actual application behavior rather than placeholders
 
-- keep responsibilities separated:
-  - database setup and sessions: db.py
-  - data access logic: crud.py
+## Verification
 
-- return consistent error payloads:
-  - stable error keys
-  - predictable structure
+Before merging a change, run the relevant checks for the modified area.
 
----
+Available project scripts include:
 
-## tests (backend)
+- `scripts/run_backend.ps1`
+- `scripts/run_tests.ps1`
 
-- pytest is required
-- use fastapi TestClient
-- no real network calls in tests
-- prefer sqlite for tests with isolated test data
-- tests must be deterministic and repeatable
+Not every change requires every command, but relevant functionality should be verified.
 
----
+## Version control
 
-## verification minimum (required)
+Development follows the branching model documented in `README.md`.
 
-after any change, run at least one relevant command:
+Changes are developed outside `main` and merged through pull requests after review and verification.
 
-- backend:
-  - scripts/run_backend.ps1
-- tests:
-  - scripts/run_tests.ps1
+## Development tools
 
-do not consider a change complete without verification.
+Automated tools, including code-review and AI-assisted tools, may be used to support development.
 
----
-
-## change discipline
-
-- keep diffs small and readable
-- prefer clarity over cleverness
-- learning and understanding are more important than speed
+Their suggestions are treated as input for review. The developer remains responsible for understanding, verifying, and accepting changes.
 

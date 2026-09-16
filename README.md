@@ -1,116 +1,77 @@
 # Study Tracker – Fullstack
 
-Study Tracker on **opiskeluun ja osaamisen näyttämiseen tarkoitettu fullstack-harjoitusprojekti**.
-Projektin tavoitteena on oppia ohjelmistokehitystä **hallitusti, ymmärtäen ja ammattimaisesti** –
-ei vain tuottamalla koodia.
+Study Tracker on fullstack-harjoitusprojekti, jonka avulla harjoitellaan ohjelmistokehitystä, versionhallintaa, testausta ja frontend–backend-rakennetta.
 
-Projekti on rakennettu vastaamaan:
-- koulun TET-harjoittelun vaatimuksia
-- osaamisen näyttöä
-- open source -projektien työskentelytapaa
-
----
+Projekti on vielä kehitysvaiheessa. Tavoitteena on rakentaa sovellus, jossa opiskeluun liittyviä tietoja voidaan käsitellä ja seurata.
 
 ## Teknologiat
 
-Projektissa yhdistyvät:
+### Frontend
+- HTML
+- CSS
+- JavaScript
 
-- **Frontend**
-  - HTML
-  - CSS
-  - JavaScript
+### Backend
+- Python
+- FastAPI
+- Pydantic v2
 
-- **Backend**
-  - Python
-  - FastAPI
-  - Pydantic v2
+### Tietokanta
+- SQLite
 
-- **Tietokannat**
-  - SQLite (kehitys ja testaus)
+### Testaus
+- pytest
+- FastAPI TestClient
 
-- **Testaus**
-  - pytest
-  - FastAPI TestClient
+### Työkalut
+- Git
+- GitHub
+- dokumentaatio
+- koodikatselmointi
 
-- **Työkalut ja käytännöt**
-  - Git
-  - dokumentaatio
-  - testattava ja hallittu kehitys
+## Projektin rakenne
 
----
+- `frontend/` – käyttöliittymän tiedostot
+- `backend/` – FastAPI-sovellus ja tietomallit
+- `db/` – tietokantaan liittyvät tiedostot
+- `tests/` – automaattiset testit
+- `docs/` – projektin tarkempi dokumentaatio
+- `scripts/` – kehitystä ja testausta tukevat skriptit
 
-## Projektin perusperiaate
+## Kehityskäytännöt
 
-Projektissa noudatetaan seuraavia periaatteita:
+Projektissa pyritään tekemään muutokset pieninä ja hallittuina kokonaisuuksina.
 
-- oppiminen ennen automaatiota
-- ymmärrys ennen nopeutta
-- pienet ja hallitut muutokset
-- testaus ja varmennus ovat pakollisia
-- tekoäly on työkalu, ei ajattelun korvike
+Muutokset testataan ennen niiden yhdistämistä päähaaraan, ja Git-historiaa käytetään projektin kehityksen seuraamiseen.
 
----
+## Haaroitusmalli
 
-## Qodo.ai tässä projektissa
+Projektissa käytetään kahta pääasiallista haaraa:
 
-Qodo.ai:tä käytetään **oppimisen tukena**, ei automaattisena koodinkorjaajana.
+- `main` sisältää vakaan version projektista.
+- `develop` toimii kehityshaarana.
 
-Qodon käyttö on tässä projektissa:
-- tarkasti rajattua
-- dokumentoitua
-- oppimiseen ohjaavaa
+Uudet muutokset tehdään `develop`-haarassa. Valmiit ja tarkistetut muutokset yhdistetään `main`-haaraan pull requestin kautta.
 
-Qodoa koskevat säännöt, työnkulut ja promptit on eriytetty omiin dokumentteihinsa,
-jotta käyttö pysyy hallittuna ja läpinäkyvänä.
+Tarvittaessa yksittäisiä ominaisuuksia voidaan kehittää omissa feature-haaroissa, jotka yhdistetään ensin `develop`-haaraan.
 
-👉 Katso tarkempi kuvaus:  
-`docs/qodo_overview.md`
+## Tekoälytyökalut
 
----
+Projektissa voidaan käyttää tekoälypohjaisia työkaluja oppimisen, ongelmien analysoinnin ja koodikatselmoinnin tukena. Kehityspäätökset ja muutosten hyväksyminen tehdään kuitenkin projektin kehittäjän toimesta.
+
+Tarkemmat työkalukohtaiset ohjeet löytyvät `docs/`-hakemistosta.
 
 ## Dokumentaatio
 
-Keskeiset dokumentit projektissa:
+Projektin tarkempi dokumentaatio löytyy `docs/`-hakemistosta.
 
-- **AGENTS.md**  
-  tekoälyagenttien (ml. Qodo) toimintarajat ja säännöt
+Keskeisiä projektitiedostoja ovat myös:
 
-- **best_practices.md**  
-  projektin pakolliset kehityskäytännöt
+- `AGENTS.md` – agenttien ja työkalujen toimintarajat
+- `best_practices.md` – projektin kehityskäytännöt
 
-- **docs/qodo_overview.md**  
-  Qodon käyttö ja dokumentaatio
+## Versionhallinta
 
-- **docs/qodo_workflow.md**  
-  pakollinen työnkulku Qodon käyttöön
+Projektissa käytetään Git-versionhallintaa ja GitHubia.
 
-- **docs/qodo_prompts.md**  
-  valmiit kehotteet Qodon ohjattuun käyttöön
-
-- **docs/learning-log.md**  
-  oppimisloki Qodon käytöstä
-
----
-
-## Kenelle projekti on tarkoitettu
-
-Tämä projekti sopii:
-- opiskelijalle
-- TET-harjoitteluun
-- osaamisen näyttöön
-- pohjaksi open source -työskentelyyn
-
-Projektin painopiste ei ole lopputuotteessa,
-vaan **kehitysprosessin hallinnassa ja ymmärtämisessä**.
-
----
-
-## Lopuksi
-
-Jos koodia muutetaan ilman ymmärrystä,
-työnkulku on epäonnistunut.
-
-Tavoite on oppia tekemään asiat oikein.
-## Workflow
-
-This project uses GitHub + Linear for issue tracking and pull request linkage.
+Kehitystyö tehdään haaroissa ja muutokset yhdistetään päähaaraan pull requestien kautta.
